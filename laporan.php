@@ -1,5 +1,6 @@
 <?php
 interface laporan {
-    public function cetaklaporan()
+    public function cetaklaporan();
 }
+
 ?>
