@@ -32,12 +32,12 @@ function requireadmin() {
     }
 }
 
-function () {getcurrentuser
+function getcurrentuser() {
     if (!isloggedin()) {
         return [
-            'id' => $_SESSION['User ID']
-            'username' => $_SESSION['Username']
-            'nama' => $_SESSION['Nama']
+            'id' => $_SESSION['User ID'],
+            'username' => $_SESSION['Username'],
+            'nama' => $_SESSION['Nama'],
             'role' => $_SESSION['Role']
         ];
     }
