@@ -27,29 +27,29 @@ class matkul {
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    public static function delete($conn, $id) {
+        $stmt = $conn->prepare("DELETE FROM matkul WHERE id=?");
+        $stmt->bind_param("i", $id);
+        return $stmt->execute();
+    }
+
+    public static function getbyid($conn, $id) {
+        $stmt = $conn->prepare("SELECT * FROM matkul WHERE id=?");
+        $stmt->bind_param("i", $id);
+        $stmt->execute();
+        return $stmt->get_result()->fetch_assoc();
+    }
+
     public function save() {
         $stmt = $this->conn->prepare("INSERT INTO matkul (kode, nama, sks, semester) VALUES (?, ?, ?, ?)");
         $stmt->bind_param("ssii", $this->kode, $this->nama, $this->sks, $this->semester);
         return $stmt->execute();
     }
 
-    public static function update() {
+    public function update() {
         $stmt = $this->conn->prepare("UPDATE matkul SET kode=?, nama=?, sks=?, semester=? WHERE id=?");
         $stmt->bind_param("ssiii", $this->kode, $this->nama, $this->sks, $this->semester, $this->id);
         return $stmt->execute();
-    }
-
-    public static function delete($conn, $id) {
-        $stmt = conn->prepare("DELETE FROM matkul WHERE id=?");
-        $stmt->bind_param("i", $id);
-        return $stmt->execute();
-    }
-
-    public static function getbyid($conn, $id) {
-        $stmt = conn->prepare("SELECT * FROM matkul  WHERE id=?");
-        $stmt->bind_param("i", $id);
-        $stmt->execute();
-        return $stmt->get_result()->fetch_assoc();
     }
 }
 ?>
