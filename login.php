@@ -637,7 +637,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </div>
             <h1 class="hero-title">
                 Sistem Akademik<br>
-                Mini
+                Universitas Iga Bakar
             </h1>
             <p class="hero-subtitle">
                 Platform manajemen akademik modern<br>
