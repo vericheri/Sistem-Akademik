@@ -1,6 +1,6 @@
 <?php
 require_once 'auth.php';
-requireAdmin();
+requireadmin();
 
 require_once 'db.php';
 $db = new db();
