@@ -1,44 +1,44 @@
 <?php
 session_start();
 
-function isloggedin() {
-    return isset($_SESSION['user_id']);
+function isLoggedIn() {
+    return isset($_SESSION['user_id']) && !empty($_SESSION['user_id']);
 }
 
-function isadmin() {
+function isAdmin() {
     return isset($_SESSION['role']) && $_SESSION['role'] == 'admin';
 }
 
-function isdosen() {
+function isDosen() {
     return isset($_SESSION['role']) && $_SESSION['role'] == 'dosen';
 }
 
-function isstaff() {
+function isStaff() {
     return isset($_SESSION['role']) && $_SESSION['role'] == 'staff';
 }
 
-function requirelogin() {
-    if (!isloggedin()) {
+function requireLogin() {
+    if (!isLoggedIn()) {
         header("Location: login.php");
         exit();
     }
 }
 
-function requireadmin() {
-    requirelogin();
-    if (!isadmin()) {
-        header("Location: index.php?error=acces_denied");
+function requireAdmin() {
+    requireLogin();
+    if (!isAdmin()) {
+        header("Location: index.php?error=access_denied");
         exit();
     }
 }
 
-function getcurrentuser() {
-    if (!isloggedin()) {
+function getCurrentUser() {
+    if (isLoggedIn()) {
         return [
-            'id' => $_SESSION['User ID'],
-            'username' => $_SESSION['Username'],
-            'nama' => $_SESSION['Nama'],
-            'role' => $_SESSION['Role']
+            'id' => $_SESSION['user_id'] ?? 0,
+            'username' => $_SESSION['username'] ?? '',
+            'nama' => $_SESSION['nama'] ?? 'User',
+            'role' => $_SESSION['role'] ?? 'staff'
         ];
     }
     return null;
