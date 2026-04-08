@@ -7,7 +7,7 @@ class matkul {
     private $semester;
     private $conn;
 
-    public function __construct($conn, $id = null, $kode = null, $sks = null, $semester = null) {
+    public function __construct($conn, $id = null, $kode = null, $nama = null, $sks = null, $semester = null) {
         $this->conn = $conn;
         $this->id = $id;
         $this->kode = $kode;
@@ -27,9 +27,9 @@ class matkul {
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public static function save() {
+    public function save() {
         $stmt = $this->conn->prepare("INSERT INTO matkul (kode, nama, sks, semester) VALUES (?, ?, ?, ?)");
-        $stmt->bind_param("ssiii", $this->kode, $this->nama, $this->sks, $this->semester);
+        $stmt->bind_param("ssii", $this->kode, $this->nama, $this->sks, $this->semester);
         return $stmt->execute();
     }
 
