@@ -8,7 +8,7 @@ class mhs extends user implements laporan {
     private $angkatan;
     private $conn;
 
-    public function __construct($conn, $id, $nama, $email) {
+    public function __construct($conn, $id, $nim, $jurusan, $angkatan, $nama, $email) {
         parent::__construct($id, $nama, $email);
         $this->nim = $nim;
         $this->jurusan = $jurusan;

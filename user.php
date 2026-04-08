@@ -1,7 +1,7 @@
 <?php
 abstract class user {
     protected $id;
-    protected $name;
+    protected $nama;
     protected $email;
 
     abstract public function getrole();
